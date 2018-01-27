@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Image, Dimensions, ActivityIndicator } from 'react-native';
+import { StyleSheet,
+  Text, View, FlatList, Image, Dimensions,
+  ActivityIndicator, TouchableHighlight } from 'react-native';
 
 class HomeScreen extends React.Component {
   state = {
@@ -32,15 +34,18 @@ class HomeScreen extends React.Component {
           data={threads}
           renderItem={({item}) => {
             return (
-              <View style={styles.listContainer}>
-                <Image style={styles.thumbnailIcon} source={{uri: item.data.thumbnail}} />
-                <View style={{width: width - 50}}>
-                  <View style={{flex: 1, flexDirection: 'column'}}>
-                    <Text>{item.data.title}</Text>
-                    <Text style={{color: '#ababab', fontSize: 10}}>{item.data.domain}</Text>
+              <TouchableHighlight onPress={() => {this.props.navigation.navigate('Detail', {url: item.data.url})}}
+                underlayColor='#cccccc'>
+                <View style={styles.listContainer}>
+                  <Image style={styles.thumbnailIcon} source={{uri: item.data.thumbnail}} />
+                  <View style={{width: width - 50}}>
+                    <View style={{flex: 1, flexDirection: 'column'}}>
+                      <Text>{item.data.title}</Text>
+                      <Text style={{color: '#ababab', fontSize: 10}}>{item.data.domain}</Text>
+                    </View>
                   </View>
                 </View>
-              </View>
+              </TouchableHighlight>
             );
           }} />}
       </View>

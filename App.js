@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, FlatList, Image, Dimensions, ActivityIndicator 
 import { StackNavigator } from 'react-navigation';
 
 import HomeScreen from './src/screens/HomeScreen';
+import DetailScreen from './src/screens/DetailScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +28,9 @@ const styles = StyleSheet.create({
 const App = StackNavigator({
   Home: {
     screen: HomeScreen,
+  },
+  Detail: {
+    screen: DetailScreen,
   },
 }, {
   navigationOptions: {
